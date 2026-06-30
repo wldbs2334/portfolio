@@ -116,7 +116,7 @@ const skills = [
   { name: "Cross-browser QA", level: 92 },
 ];
 
-const tools = ["HTML5", "CSS3", "Sass/SCSS", "JavaScript", "jQuery", "Figma", "Git", "Webpack", "Tailwind CSS", "Bootstrap", "Storybook", "Zeplin"];
+const tools = ["HTML5", "CSS3", "Sass/SCSS", "JavaScript", "jQuery", "Figma", "Git", "Tailwind CSS"];
 
 /* ─── Skill Bar ─── */
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
