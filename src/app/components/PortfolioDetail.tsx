@@ -3,26 +3,26 @@ import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { motion } from "motion/react";
 
 export const projects = [
-  // {
-  //   id: "1",
-  //   title: "NEON STORE",
-  //   category: "E-Commerce",
-  //   year: "2024",
-  //   description:
-  //     "패션 브랜드 공식 온라인 쇼핑몰 퍼블리싱. 반응형 레이아웃과 스무스한 인터랙션으로 모바일·데스크탑 완벽 대응. 크로스브라우저 QA까지 담당했습니다.",
-  //   longDescription:
-  //     "HTML5, CSS3(Sass), jQuery를 활용해 디자인 시안을 100% 픽셀 퍼펙트로 구현했습니다. 모바일 퍼스트 반응형 설계와 웹 접근성(WCAG 2.1 AA) 기준을 충족했으며, IE11~최신 브라우저 전 범위 크로스브라우저 대응을 완료했습니다.",
-  //   tech: ["HTML5", "Sass/SCSS", "jQuery", "Figma", "Zeplin"],
-  //   color: "#9AE3F7",
-  //   accent: "#FDE991",
-  //   image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=1200&h=700&fit=crop&auto=format",
-  //   github: "https://github.com",
-  //   live: "https://example.com",
-  //   highlights: ["픽셀 퍼펙트 구현", "크로스브라우저 완벽 대응", "WCAG 2.1 AA 준수"],
-  // },
+  {
+    id: "1",
+    title: "primevideo 퍼블리싱",
+    category: "E-Commerce",
+    year: "2024",
+    description:
+      "패션 브랜드 공식 온라인 쇼핑몰 퍼블리싱. 반응형 레이아웃과 스무스한 인터랙션으로 모바일·데스크탑 완벽 대응. 크로스브라우저 QA까지 담당했습니다.",
+    longDescription:
+      "HTML5, CSS3(Sass), jQuery를 활용해 디자인 시안을 100% 픽셀 퍼펙트로 구현했습니다. 모바일 퍼스트 반응형 설계와 웹 접근성(WCAG 2.1 AA) 기준을 충족했으며, IE11~최신 브라우저 전 범위 크로스브라우저 대응을 완료했습니다.",
+    tech: ["HTML5", "Sass/SCSS", "jQuery", "Figma", "Zeplin"],
+    color: "#9AE3F7",
+    accent: "#FDE991",
+    image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=1200&h=700&fit=crop&auto=format",
+    github: "https://github.com",
+    live: "https://ott-primevideo.netlify.app/",
+    highlights: ["픽셀 퍼펙트 구현", "크로스브라우저 완벽 대응", "WCAG 2.1 AA 준수"],
+  },
   {
     id: "2",
-    title: "CASETiFy 리뉴얼",
+    title: "CASETiFY 리뉴얼",
     category: "Landing Page",
     year: "2024",
     description:
