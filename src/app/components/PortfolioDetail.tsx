@@ -6,8 +6,8 @@ export const projects = [
   {
     id: "1",
     title: "primevideo 퍼블리싱",
-    category: "E-Commerce",
-    year: "2024",
+    category: "Langing Page",
+    year: "2026",
     description:
       "패션 브랜드 공식 온라인 쇼핑몰 퍼블리싱. 반응형 레이아웃과 스무스한 인터랙션으로 모바일·데스크탑 완벽 대응. 크로스브라우저 QA까지 담당했습니다.",
     longDescription:
@@ -15,7 +15,7 @@ export const projects = [
     tech: ["HTML5", "Sass/SCSS", "jQuery", "Figma", "Zeplin"],
     color: "#9AE3F7",
     accent: "#FDE991",
-    image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=1200&h=700&fit=crop&auto=format",
+    image: "/public/images/primevideo.png",
     github: "https://github.com",
     live: "https://ott-primevideo.netlify.app/",
     highlights: ["픽셀 퍼펙트 구현", "크로스브라우저 완벽 대응", "WCAG 2.1 AA 준수"],
@@ -23,8 +23,8 @@ export const projects = [
   {
     id: "2",
     title: "CASETiFY 리뉴얼",
-    category: "Landing Page",
-    year: "2024",
+    category: "E-Commerce",
+    year: "2026",
     description:
       "SaaS 서비스 랜딩 페이지 퍼블리싱. 스크롤 애니메이션과 인터랙티브 요소로 전환율을 높이는 랜딩 페이지를 구현했습니다.",
     longDescription:
@@ -32,7 +32,7 @@ export const projects = [
     tech: ["HTML5", "CSS3", "JavaScript", "GSAP", "Webpack"],
     color: "#FDE991",
     accent: "#2AB8DC",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=700&fit=crop&auto=format",
+    image: "/public/images/casetify.png",
     github: "https://github.com",
     live: "https://jiyoon-casetify.netlify.app/",
     highlights: ["Core Web Vitals LCP 90+", "스크롤 인터랙션 구현", "SVG 최적화"],
@@ -40,8 +40,8 @@ export const projects = [
   {
     id: "3",
     title: "NETFLIX 리뉴얼",
-    category: "Admin Dashboard",
-    year: "2023",
+    category: "OTT",
+    year: "2026",
     description:
       "기업용 관리자 대시보드 UI 마크업. 복잡한 테이블·차트 레이아웃을 시맨틱하고 접근성 높게 구현했습니다.",
     longDescription:
@@ -49,7 +49,7 @@ export const projects = [
     tech: ["HTML5", "Sass", "React", "Storybook", "Figma"],
     color: "#2AB8DC",
     accent: "#FDE991",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=700&fit=crop&auto=format",
+    image: "public/images/netflix.png",
     github: "https://github.com",
     live: "https://neo-flix-jy.netlify.app/",
     highlights: ["다크/라이트 테마 전환", "Storybook 컴포넌트 문서화", "반응형 그리드 설계"],
