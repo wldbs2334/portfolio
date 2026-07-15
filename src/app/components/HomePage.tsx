@@ -107,42 +107,29 @@ function NavDots({ active, total, onDotClick }: { active: number; total: number;
 }
 
 /* ─── Skills data ─── */
-const skills = [
-  { name: "HTML / CSS", level: 98 },
-  { name: "JavaScript", level: 88 },
-  { name: "Responsive Design", level: 95 },
-  { name: "Figma · Sketch", level: 85 },
-  { name: "React", level: 75 },
-  { name: "Cross-browser QA", level: 92 },
+const skillGroups = [
+  {
+    label: "마크업 & 스타일",
+    emoji: "✦",
+    color: "#9AE3F7",
+    desc: "디자인 시안을 픽셀 단위까지 정확하게 구현합니다. 시맨틱 구조와 반응형 레이아웃은 기본, 다양한 브라우저 환경에서도 동일한 화면을 보장합니다.",
+    items: ["HTML5", "CSS3", "Sass / SCSS", "시맨틱 마크업", "반응형 웹"],
+  },
+  {
+    label: "인터랙션",
+    emoji: "◈",
+    color: "#2AB8DC",
+    desc: "사용자가 느끼는 작은 움직임 하나하나에 신경 씁니다. CSS 애니메이션과 스크립트를 활용해 디자인에 생동감을 불어넣습니다.",
+    items: ["JavaScript", "jQuery", "CSS 애니메이션"],
+  },
+  {
+    label: "툴 & 협업",
+    emoji: "◉",
+    color: "#FDE991",
+    desc: "Figma 시안을 그대로 읽어내고, Git으로 팀과 함께 버전을 관리합니다. Tailwind로 빠르고 일관된 스타일 작업도 가능합니다.",
+    items: ["Figma", "Git", "Tailwind CSS"],
+  },
 ];
-
-const tools = ["HTML5", "CSS3", "Sass/SCSS", "JavaScript", "jQuery", "Figma", "Git", "Tailwind CSS"];
-
-/* ─── Skill Bar ─── */
-function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-
-  return (
-    <div ref={ref} className="mb-5">
-      <div className="flex justify-between mb-2">
-        <span style={{ fontFamily: "'DM Sans', sans-serif", color: "#0D1A2A", fontWeight: 600 }}>{name}</span>
-        <span style={{ fontFamily: "'Unbounded', sans-serif", fontSize: "10px", color: "#2AB8DC" }}>
-          {level}%
-        </span>
-      </div>
-      <div className="h-2.5 rounded-full overflow-hidden" style={{ background: "rgba(13,26,42,0.12)" }}>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={inView ? { width: `${level}%` } : {}}
-          transition={{ duration: 1.1, delay, ease: "easeOut" }}
-          className="h-full rounded-full"
-          style={{ background: "linear-gradient(90deg, #2AB8DC, #0D1A2A)" }}
-        />
-      </div>
-    </div>
-  );
-}
 
 /* ─── Portfolio Row Card (new design) ─── */
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
@@ -446,94 +433,132 @@ export function HomePage() {
         {/* ══════════ SECTION 2 — SKILLS ══════════ */}
         <Section id="skills" style={{ background: "#FDE991" }}>
           <Geo shape="circle" size={380} color="#2AB8DC" opacity={0.1} className="top-[-60px] right-[-60px]" />
-          <Geo shape="ring" size={180} color="#0D1A2A" opacity={0.08} className="bottom-16 left-20" />
+          <Geo shape="ring" size={180} color="#0D1A2A" opacity={0.07} className="bottom-16 left-20" />
           <Geo shape="square" size={90} color="#9AE3F7" opacity={0.18} className="bottom-24 right-20" />
-          <Geo shape="circle" size={44} color="#2AB8DC" opacity={0.5} className="top-24 left-1/3" />
 
           <div className="relative z-10 flex flex-col justify-center h-full px-12 md:px-24 max-w-[1400px] mx-auto w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              {/* Left */}
+            {/* Header */}
+            <div className="flex items-end justify-between mb-10">
               <div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  style={{ fontFamily: "'Unbounded', sans-serif", fontSize: "10px", color: "#0D1A2A80", letterSpacing: "0.2em" }}
-                  className="mb-3"
+                  style={{ fontFamily: "'Unbounded', sans-serif", fontSize: "10px", color: "#0D1A2A60", letterSpacing: "0.2em" }}
+                  className="mb-2"
                 >
                   02 / SKILLS
                 </motion.p>
                 <motion.h2
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
+                  transition={{ duration: 0.55, delay: 0.08 }}
+                  style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 900, fontSize: "clamp(2.2rem, 4vw, 3.8rem)", lineHeight: 1.05, color: "#0D1A2A" }}
+                >
+                  내가 잘하는 것들
+                </motion.h2>
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="hidden md:block text-sm"
+                style={{ color: "#0D1A2A70", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                시맨틱 HTML · 모던 CSS · 픽셀 퍼펙트 마크업
+              </motion.p>
+            </div>
+
+            {/* Skill group cards — 3열 크게 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {skillGroups.map((group, gi) => (
+                <motion.div
+                  key={group.label}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: gi * 0.12 }}
+                  className="rounded-3xl p-8 flex flex-col gap-6"
                   style={{
-                    fontFamily: "'Unbounded', sans-serif",
-                    fontWeight: 900,
-                    fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-                    lineHeight: 1.1,
-                    color: "#0D1A2A",
+                    background: "#FFFFFFB8",
+                    backdropFilter: "blur(16px)",
+                    border: "1.5px solid #FFFFFF",
+                    boxShadow: `0 8px 32px ${group.color}25`,
                   }}
                 >
-                  내가 잘하는
-                  <br />
-                  것들
-                </motion.h2>
-
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.25 }}
-                  className="mt-5 mb-7 text-base leading-relaxed"
-                  style={{ color: "#0D1A2A90", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  시맨틱 HTML과 모던 CSS를 기반으로 다양한 환경에서 완벽하게 동작하는 마크업을 구현합니다.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="flex flex-wrap gap-2"
-                >
-                  {tools.map((tool, i) => (
-                    <motion.span
-                      key={tool}
-                      initial={{ opacity: 0, scale: 0.85 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.35 + i * 0.04 }}
-                      className="px-3 py-1.5 rounded-full text-xs"
+                  {/* Top — emoji badge + label */}
+                  <div className="flex items-start justify-between">
+                    <div className="flex flex-col gap-2">
+                      <span
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl"
+                        style={{ background: group.color, color: "#0D1A2A" }}
+                      >
+                        {group.emoji}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "'Unbounded', sans-serif",
+                          fontWeight: 800,
+                          fontSize: "15px",
+                          color: "#0D1A2A",
+                          lineHeight: 1.3,
+                          marginTop: "4px",
+                        }}
+                      >
+                        {group.label}
+                      </span>
+                    </div>
+                    {/* Subtle index */}
+                    <span
                       style={{
-                        background: "#FFFFFF70",
-                        color: "#0D1A2A",
-                        border: "1px solid #0D1A2A20",
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontWeight: 500,
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontWeight: 900,
+                        fontSize: "48px",
+                        color: group.color,
+                        lineHeight: 1,
+                        opacity: 0.5,
                       }}
                     >
-                      {tool}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </div>
+                      0{gi + 1}
+                    </span>
+                  </div>
 
-              {/* Right — skill bars */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white/50 rounded-3xl p-8"
-                style={{ backdropFilter: "blur(8px)", border: "1px solid #FFFFFF80" }}
-              >
-                {skills.map((s, i) => (
-                  <SkillBar key={s.name} name={s.name} level={s.level} delay={0.3 + i * 0.1} />
-                ))}
-              </motion.div>
+                  {/* Description */}
+                  <p
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: "14px",
+                      color: "#2A4A5A",
+                      lineHeight: 1.75,
+                    }}
+                  >
+                    {group.desc}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="h-px w-full" style={{ background: "#0D1A2A10" }} />
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 rounded-full text-sm font-medium"
+                        style={{
+                          background: group.color + "28",
+                          color: "#0D1A2A",
+                          border: `1px solid ${group.color}60`,
+                          fontFamily: "'DM Sans', sans-serif",
+                        }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </Section>
