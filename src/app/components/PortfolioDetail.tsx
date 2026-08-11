@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { motion } from "motion/react";
 
+
 export const projects = [
   {
     id: "1",
@@ -9,10 +10,10 @@ export const projects = [
     category: "Langing Page",
     year: "2026",
     description:
-      "패션 브랜드 공식 온라인 쇼핑몰 퍼블리싱. 반응형 레이아웃과 스무스한 인터랙션으로 모바일·데스크탑 완벽 대응. 크로스브라우저 QA까지 담당했습니다.",
+      "OTT 사이트 prime video 퍼블리싱. 반응형 레이아웃과 스무스한 인터랙션으로 모바일·데스크탑 대응.",
     longDescription:
-      "HTML5, CSS3(Sass), jQuery를 활용해 디자인 시안을 100% 픽셀 퍼펙트로 구현했습니다. 모바일 퍼스트 반응형 설계와 웹 접근성(WCAG 2.1 AA) 기준을 충족했으며, IE11~최신 브라우저 전 범위 크로스브라우저 대응을 완료했습니다.",
-    tech: ["HTML5", "Sass/SCSS", "jQuery", "Figma", "Zeplin"],
+      "HTML5, CSS3를 활용해 디자인 시안을 100% 픽셀 퍼펙트로 구현했습니다.",
+    tech: ["HTML5", "CSS3", "Figma"],
     color: "#9AE3F7",
     accent: "#FDE991",
     image: "/public/images/primevideo.png",
@@ -28,7 +29,7 @@ export const projects = [
     description:
       "SaaS 서비스 랜딩 페이지 퍼블리싱. 스크롤 애니메이션과 인터랙티브 요소로 전환율을 높이는 랜딩 페이지를 구현했습니다.",
     longDescription:
-      "CSS 애니메이션과 Intersection Observer API를 활용한 스크롤 인터랙션 구현, SVG 아이콘 최적화, 이미지 레이지 로딩, Core Web Vitals 점수 최적화(LCP 90점 이상)까지 성능 개선을 담당했습니다.",
+      "CSS 애니메이션과 Intersection Observer API를 활용한 스크롤 인터랙션 구현, SVG 아이콘 최적화, 이미지 레이지 로딩",
     tech: ["HTML5", "CSS3", "JavaScript", "GSAP", "Webpack"],
     color: "#FDE991",
     accent: "#2AB8DC",
