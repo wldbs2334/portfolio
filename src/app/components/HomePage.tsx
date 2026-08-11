@@ -797,139 +797,142 @@ export function HomePage() {
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl rounded-3xl overflow-hidden max-h-[85vh] overflow-y-auto no-scrollbar"
+              className="relative w-full max-w-3xl rounded-3xl overflow-hidden"
               style={{ background: "#FFFFFF", boxShadow: "0 24px 80px rgba(13,26,42,0.35)" }}
             >
-              {/* Close button */}
+              {/* Close button — always visible, outside scroll area */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
                 style={{ background: "#FFFFFFE0", color: "#0D1A2A" }}
               >
                 <X size={18} />
               </button>
 
-              {/* Image */}
-              <div className="relative w-full h-64">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className="px-3 py-1 rounded-full"
-                    style={{
-                      background: selectedProject.color + "22",
-                      color: selectedProject.color,
-                      fontFamily: "'Unbounded', sans-serif",
-                      fontSize: "10px",
-                      letterSpacing: "0.08em",
-                    }}
-                  >
-                    {selectedProject.category}
-                  </span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#5A7A8A" }}>
-                    {selectedProject.year}
-                  </span>
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "'Unbounded', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "28px",
-                    color: "#0D1A2A",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {selectedProject.title}
-                </h3>
-
-                {/* Color bar */}
-                <div className="w-14 h-1.5 rounded-full mt-5 mb-5" style={{ background: selectedProject.color }} />
-
-                <p
-                  className="leading-relaxed"
-                  style={{ color: "#2A4A5A", fontFamily: "'DM Sans', sans-serif", fontSize: "15px" }}
-                >
-                  {selectedProject.description}
-                </p>
-                <p
-                  className="mt-3 leading-relaxed"
-                  style={{ color: "#5A7A8A", fontFamily: "'DM Sans', sans-serif", fontSize: "13px" }}
-                >
-                  {selectedProject.longDescription}
-                </p>
-
-                {/* Highlights */}
-                <div className="grid grid-cols-3 gap-3 mt-7">
-                  {selectedProject.highlights.map((h, i) => (
-                    <div
-                      key={i}
-                      className="p-3 rounded-2xl text-center"
-                      style={{ background: selectedProject.color + "18", border: `1.5px solid ${selectedProject.color}35` }}
-                    >
-                      <p className="text-xs font-semibold leading-snug" style={{ color: "#0D1A2A" }}>{h}</p>
-                    </div>
-                  ))}
+              {/* Scrollable content */}
+              <div className="max-h-[85vh] overflow-y-auto no-scrollbar">
+                {/* Image */}
+                <div className="relative w-full h-64">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {selectedProject.tech.map((t) => (
+                {/* Content */}
+                <div className="p-10">
+                  <div className="flex items-center gap-3 mb-4">
                     <span
-                      key={t}
-                      className="px-3 py-1.5 rounded-full text-xs"
+                      className="px-3 py-1 rounded-full"
                       style={{
-                        background: "#F7FBFE",
-                        color: "#2AB8DC",
-                        border: "1.5px solid #2AB8DC30",
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontWeight: 600,
+                        background: selectedProject.color + "22",
+                        color: selectedProject.color,
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontSize: "10px",
+                        letterSpacing: "0.08em",
                       }}
                     >
-                      {t}
+                      {selectedProject.category}
                     </span>
-                  ))}
-                </div>
+                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#5A7A8A" }}>
+                      {selectedProject.year}
+                    </span>
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "'Unbounded', sans-serif",
+                      fontWeight: 800,
+                      fontSize: "28px",
+                      color: "#0D1A2A",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {selectedProject.title}
+                  </h3>
 
-                {/* Links */}
-                <div className="flex gap-3 mt-8">
-                  <a
-                    href={selectedProject.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-full text-sm transition-all duration-300 hover:scale-105"
-                    style={{
-                      background: selectedProject.color,
-                      color: "#0D1A2A",
-                      fontFamily: "'Unbounded', sans-serif",
-                      fontSize: "11px",
-                    }}
+                  {/* Color bar */}
+                  <div className="w-14 h-1.5 rounded-full mt-5 mb-5" style={{ background: selectedProject.color }} />
+
+                  <p
+                    className="leading-relaxed"
+                    style={{ color: "#2A4A5A", fontFamily: "'DM Sans', sans-serif", fontSize: "15px" }}
                   >
-                    <ExternalLink size={14} />
-                    LIVE
-                  </a>
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-full text-sm transition-all duration-300"
-                    style={{
-                      border: `1.5px solid ${selectedProject.color}60`,
-                      color: "#0D1A2A",
-                      fontFamily: "'Unbounded', sans-serif",
-                      fontSize: "11px",
-                      background: "transparent",
-                    }}
+                    {selectedProject.description}
+                  </p>
+                  <p
+                    className="mt-3 leading-relaxed"
+                    style={{ color: "#5A7A8A", fontFamily: "'DM Sans', sans-serif", fontSize: "13px" }}
                   >
-                    <Github size={14} />
-                    GITHUB
-                  </a>
+                    {selectedProject.longDescription}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="grid grid-cols-3 gap-3 mt-7">
+                    {selectedProject.highlights.map((h, i) => (
+                      <div
+                        key={i}
+                        className="p-3 rounded-2xl text-center"
+                        style={{ background: selectedProject.color + "18", border: `1.5px solid ${selectedProject.color}35` }}
+                      >
+                        <p className="text-xs font-semibold leading-snug" style={{ color: "#0D1A2A" }}>{h}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    {selectedProject.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1.5 rounded-full text-xs"
+                        style={{
+                          background: "#F7FBFE",
+                          color: "#2AB8DC",
+                          border: "1.5px solid #2AB8DC30",
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-3 mt-8">
+                    <a
+                      href={selectedProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full text-sm transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: selectedProject.color,
+                        color: "#0D1A2A",
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontSize: "11px",
+                      }}
+                    >
+                      <ExternalLink size={14} />
+                      LIVE
+                    </a>
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full text-sm transition-all duration-300"
+                      style={{
+                        border: `1.5px solid ${selectedProject.color}60`,
+                        color: "#0D1A2A",
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontSize: "11px",
+                        background: "transparent",
+                      }}
+                    >
+                      <Github size={14} />
+                      GITHUB
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
