@@ -17,6 +17,7 @@ export const projects = [
     color: "#9AE3F7",
     accent: "#FDE991",
     image: "/images/primevideo.png",
+    imagePosition: "top", // ← 추가. 상단이 보이게. 필요시 "center 20%" 같은 % 값도 가능
     github: "https://github.com",
     live: "https://ott-primevideo.netlify.app/",
     highlights: ["픽셀 퍼펙트 구현", "크로스브라우저 완벽 대응", "WCAG 2.1 AA 준수"],
@@ -27,16 +28,17 @@ export const projects = [
     category: "E-Commerce",
     year: "2026",
     description:
-      "SaaS 서비스 랜딩 페이지 퍼블리싱. 스크롤 애니메이션과 인터랙티브 요소로 전환율을 높이는 랜딩 페이지를 구현했습니다.",
+      "CASETiFY의 상품 탐색 및 구매 경험을 개선하기 위한 UX/UI 리뉴얼 프로젝트입니다.",
     longDescription:
-      "CSS 애니메이션과 Intersection Observer API를 활용한 스크롤 인터랙션 구현, SVG 아이콘 최적화, 이미지 레이지 로딩",
-    tech: ["HTML5", "CSS3", "JavaScript", "GSAP", "Webpack"],
+      "사용자가 원하는 상품을 빠르게 탐색할 수 있도록 카테고리와 필터 구조를 개선하고, 주요 구매 정보를 직관적으로 확인할 수 있도록 UI를 재구성했습니다.",
+    tech: ["HTML5", "CSS3", "JavaScript", "Figma", "Git/GitHub"],
     color: "#FDE991",
     accent: "#2AB8DC",
     image: "/images/casetify.png",
+    imagePosition: "top", // ← 추가. 상단이 보이게. 필요시 "center 20%" 같은 % 값도 가능
     github: "https://github.com",
     live: "https://jiyoon-casetify.netlify.app/",
-    highlights: ["Core Web Vitals LCP 90+", "스크롤 인터랙션 구현", "SVG 최적화"],
+    highlights: ["상품 탐색 단계 간소화", "필터 및 카테고리 UX 개선", "구매 정보 접근성 강화"],
   },
   {
     id: "3",
@@ -51,6 +53,7 @@ export const projects = [
     color: "#2AB8DC",
     accent: "#FDE991",
     image: "/images/netflix.png",
+    imagePosition: "top", // ← 추가. 상단이 보이게. 필요시 "center 20%" 같은 % 값도 가능
     github: "https://github.com",
     live: "https://neo-flix-jy.netlify.app/",
     highlights: ["다크/라이트 테마 전환", "Storybook 컴포넌트 문서화", "반응형 그리드 설계"],
@@ -135,8 +138,11 @@ export function PortfolioDetail() {
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
-            style={{ minHeight: "50vh" }}
+            className="w-full h-full "
+            style={{
+              minHeight: "50vh",
+              objectPosition: "center 80%",
+            }}
           />
           <div
             className="absolute inset-0"

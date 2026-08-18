@@ -795,6 +795,7 @@ export function HomePage() {
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: selectedProject.imagePosition ?? "center" }}
                   />
                 </div>
 
