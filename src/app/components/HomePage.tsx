@@ -1,7 +1,20 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import { ArrowDown, Mail, Github, Linkedin, Send, ExternalLink, X } from "lucide-react";
+import { ArrowDown, Mail, Github, Linkedin, Send, ExternalLink, X, Lightbulb, MessageCircle, Search, BookOpen, User } from "lucide-react";
 import { projects } from "./PortfolioDetail";
+import {
+  SiHtml5,
+  SiCss,
+  SiSass,
+  SiJavascript,
+  SiJquery,
+  SiTypescript,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiFigma,
+  SiGit,
+} from "react-icons/si";
 
 /* ─── Geometric shape decoration ─── */
 function Geo({
@@ -106,28 +119,26 @@ function NavDots({ active, total, onDotClick }: { active: number; total: number;
 }
 
 /* ─── Skills data ─── */
-const skillGroups = [
-  {
-    label: "마크업 & 스타일",
-    emoji: "✦",
-    color: "#9AE3F7",
-    desc: "디자인 시안을 픽셀 단위까지 정확하게 구현합니다. 시맨틱 구조와 반응형 레이아웃은 기본, 다양한 브라우저 환경에서도 동일한 화면을 보장합니다.",
-    items: ["HTML5", "CSS3", "Sass / SCSS", "시맨틱 마크업", "반응형 웹"],
-  },
-  {
-    label: "인터랙션",
-    emoji: "◈",
-    color: "#2AB8DC",
-    desc: "사용자가 느끼는 작은 움직임 하나하나에 신경 씁니다. CSS 애니메이션과 스크립트를 활용해 디자인에 생동감을 불어넣습니다.",
-    items: ["JavaScript", "jQuery", "CSS 애니메이션"],
-  },
-  {
-    label: "툴 & 협업",
-    emoji: "◉",
-    color: "#FDE991",
-    desc: "Figma 시안을 그대로 읽어내고, Git으로 팀과 함께 버전을 관리합니다. Tailwind로 빠르고 일관된 스타일 작업도 가능합니다.",
-    items: ["Figma", "Git", "Tailwind CSS"],
-  },
+const skillIcons = [
+  { name: "HTML5", Icon: SiHtml5, color: "#E44D26" },
+  { name: "CSS3", Icon: SiCss, color: "#2965F1" },
+  { name: "Sass/SCSS", Icon: SiSass, color: "#CC6699" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#F0DB4F" },
+  { name: "jQuery", Icon: SiJquery, color: "#0769AD" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "React.js", Icon: SiReact, color: "#61DAFB" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
+  // { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
+  { name: "Figma", Icon: SiFigma, color: "#A259FF" },
+  { name: "Git", Icon: SiGit, color: "#F1502F" },
+];
+
+const softSkills = [
+  { title: "문제 해결력", desc: "문제의 원인을 분석하고\n해결책을 찾아 해결합니다.", Icon: Lightbulb },
+  { title: "커뮤니케이션", desc: "의견을 명확하게 전달하고\n팀원과 원활히 협업합니다.", Icon: MessageCircle },
+  { title: "꼼꼼함 / 디테일", desc: "작은 디테일까지 놓치지 않고\n완성도 높은 결과를 만듭니다.", Icon: Search },
+  { title: "학습력 / 자기주도성", desc: "새로운 기술을 빠르게 학습하고\n스스로 성장해 나갑니다.", Icon: BookOpen },
+  { title: "사용자 중심 사고", desc: "사용자의 입장에서 생각하고\n더 나은 경험을 고민합니다.", Icon: User },
 ];
 
 /* ─── Portfolio Row Card ─── */
@@ -482,92 +493,59 @@ export function HomePage() {
               </motion.p>
             </div>
 
-            {/* Skill group cards — 3열 크게 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {skillGroups.map((group, gi) => (
+            {/* Technical skills */}
+            <div className="flex items-center gap-2 mb-5">
+              <span className="w-4 h-px" style={{ background: "#0D1A2A" }} />
+              <span style={{ fontFamily: "'Unbounded', sans-serif", fontSize: "11px", letterSpacing: "0.15em", color: "#0D1A2A" }}>
+                TECHNICAL SKILLS
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-10">
+              {skillIcons.map((skill, i) => (
                 <motion.div
-                  key={group.label}
-                  initial={{ opacity: 0, y: 40 }}
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: gi * 0.12 }}
-                  className="rounded-3xl p-8 flex flex-col gap-6"
-                  style={{
-                    background: "#FFFFFFB8",
-                    backdropFilter: "blur(16px)",
-                    border: "1.5px solid #FFFFFF",
-                    boxShadow: `0 8px 32px ${group.color}25`,
-                  }}
+                  transition={{ duration: 0.4, delay: i * 0.04 }}
+                  className="flex flex-col items-center justify-center gap-3 rounded-2xl py-7 px-3"
+                  style={{ background: "#FBEEC1", border: "1px solid #EBDFA3" }}
                 >
-                  {/* Top — emoji badge + label */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex flex-col gap-2">
-                      <span
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl"
-                        style={{ background: group.color, color: "#0D1A2A" }}
-                      >
-                        {group.emoji}
-                      </span>
-                      <span
-                        style={{
-                          fontFamily: "'Unbounded', sans-serif",
-                          fontWeight: 800,
-                          fontSize: "15px",
-                          color: "#0D1A2A",
-                          lineHeight: 1.3,
-                          marginTop: "4px",
-                        }}
-                      >
-                        {group.label}
-                      </span>
-                    </div>
-                    {/* Subtle index */}
-                    <span
-                      style={{
-                        fontFamily: "'Unbounded', sans-serif",
-                        fontWeight: 900,
-                        fontSize: "48px",
-                        color: group.color,
-                        lineHeight: 1,
-                        opacity: 0.5,
-                      }}
-                    >
-                      0{gi + 1}
-                    </span>
-                  </div>
+                  <skill.Icon size={32} color={skill.color} />
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "13px", color: "#0D1A2A" }}>
+                    {skill.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
 
-                  {/* Description */}
-                  <p
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "14px",
-                      color: "#2A4A5A",
-                      lineHeight: 1.75,
-                    }}
-                  >
-                    {group.desc}
+            {/* Soft skills */}
+            <div className="flex items-center gap-2 mb-5">
+              <span className="w-4 h-px" style={{ background: "#0D1A2A" }} />
+              <span style={{ fontFamily: "'Unbounded', sans-serif", fontSize: "11px", letterSpacing: "0.15em", color: "#0D1A2A" }}>
+                SOFT SKILLS
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+              {softSkills.map((skill, i) => (
+                <motion.div
+                  key={skill.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="flex flex-col items-center text-center gap-3 rounded-2xl py-8 px-4"
+                  style={{ background: "#FBEEC1", border: "1px solid #EBDFA3" }}
+                >
+                  <skill.Icon size={26} color="#3F8F3F" />
+                  <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "15px", color: "#0D1A2A" }}>
+                    {skill.title}
+                  </span>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", color: "#5A5433", lineHeight: 1.6, whiteSpace: "pre-line" }}>
+                    {skill.desc}
                   </p>
-
-                  {/* Divider */}
-                  <div className="h-px w-full" style={{ background: "#0D1A2A10" }} />
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="px-3 py-1.5 rounded-full text-sm font-medium"
-                        style={{
-                          background: group.color + "28",
-                          color: "#0D1A2A",
-                          border: `1px solid ${group.color}60`,
-                          fontFamily: "'DM Sans', sans-serif",
-                        }}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
                 </motion.div>
               ))}
             </div>
