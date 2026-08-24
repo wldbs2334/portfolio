@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { HomePage } from "./HomePage";
-import { PortfolioDetail } from "./components/PortfolioDetail";
+import { PortfolioDetail } from "./PortfolioDetail";
 
 export default function App() {
   return (
