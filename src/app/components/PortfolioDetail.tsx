@@ -31,12 +31,12 @@ export const projects = [
       "CASETiFY의 상품 탐색 및 구매 경험을 개선하기 위한 UX/UI 리뉴얼 프로젝트입니다.",
     longDescription:
       "사용자가 원하는 상품을 빠르게 탐색할 수 있도록 카테고리와 필터 구조를 개선하고, 주요 구매 정보를 직관적으로 확인할 수 있도록 UI를 재구성했습니다.",
-    tech: ["HTML5", "CSS3", "JavaScript", "Figma", "Git/GitHub"],
+    tech: ["HTML5", "CSS3", "JavaScript", "React", "Figma", "Git/GitHub"],
     color: "#FDE991",
     accent: "#2AB8DC",
     image: "/images/casetify.png",
     imagePosition: "top", // ← 추가. 상단이 보이게. 필요시 "center 20%" 같은 % 값도 가능
-    github: "https://github.com",
+    github: "https://github.com/wldbs2334/CASETiFY",
     live: "https://jiyoon-casetify.netlify.app/",
     highlights: ["상품 탐색 단계 간소화", "필터 및 카테고리 UX 개선", "구매 정보 접근성 강화"],
   },
