@@ -1,4 +1,4 @@
-import { projects } from "../components/PortfolioDetail";
+import { projects } from "../PortfolioDetail";
 import { Geo } from "../components/Geo";
 import { ProjectCard } from "../components/ProjectCard";
 import { Section } from "../components/Section";

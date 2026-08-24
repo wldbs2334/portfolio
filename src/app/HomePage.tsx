@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { projects } from "./PortfolioDetail";
-import { NavDots } from "./NavDots";
-import { ProjectModal } from "./ProjectModal";
-import { ContactSection } from "../sections/ContactSection";
-import { HeroSection } from "../sections/HeroSection";
-import { PortfolioSection } from "../sections/PortfolioSection";
-import { SkillsSection } from "../sections/SkillsSection";
+import { NavDots } from "./components/NavDots";
+import { ProjectModal } from "./components/ProjectModal";
+import { ContactSection } from "./sections/ContactSection";
+import { HeroSection } from "./sections/HeroSection";
+import { PortfolioSection } from "./sections/PortfolioSection";
+import { SkillsSection } from "./sections/SkillsSection";
 
 export function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);

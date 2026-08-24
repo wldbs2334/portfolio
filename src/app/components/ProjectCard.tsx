@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { ExternalLink } from "lucide-react";
-import { projects } from "./PortfolioDetail";
+import { projects } from "../PortfolioDetail";
 
 export function ProjectCard({
   project,
