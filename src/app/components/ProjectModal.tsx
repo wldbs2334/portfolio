@@ -13,6 +13,10 @@ export function ProjectModal({
   project,
   onClose,
 }: ProjectModalProps) {
+  const projectIndex = project
+    ? projects.findIndex((item) => item.id === project.id)
+    : -1;
+
   return (
     <AnimatePresence>
       {project && (
@@ -21,17 +25,41 @@ export function ProjectModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+          className="
+            fixed
+            inset-0
+            z-[100]
+            flex
+            items-center
+            justify-center
+            p-4
+            md:p-8
+          "
           style={{
-            background: "rgba(13, 26, 42, 0.72)",
-            backdropFilter: "blur(8px)",
+            background: "rgba(13,26,42,0.68)",
+            backdropFilter: "blur(7px)",
           }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            initial={{
+              opacity: 0,
+              scale: 0.95,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.95,
+              y: 20,
+            }}
+            transition={{
+              duration: 0.25,
+              ease: "easeOut",
+            }}
             onClick={(e) => e.stopPropagation()}
             className="
               relative
@@ -46,12 +74,13 @@ export function ProjectModal({
               md:flex-row
             "
             style={{
-              boxShadow: "0 30px 100px rgba(13,26,42,0.4)",
+              boxShadow:
+                "0 30px 100px rgba(13,26,42,0.4)",
             }}
           >
-            {/* ========================================
-                CLOSE BUTTON
-            ======================================== */}
+            {/* =====================================
+                CLOSE
+            ====================================== */}
             <button
               type="button"
               onClick={onClose}
@@ -68,29 +97,30 @@ export function ProjectModal({
                 items-center
                 justify-center
                 bg-white/90
-                backdrop-blur-sm
                 border
                 border-black/10
                 transition-all
                 duration-300
                 hover:scale-105
-                hover:bg-white
               "
               style={{
                 color: "#0D1A2A",
               }}
             >
-              <X size={20} strokeWidth={1.8} />
+              <X
+                size={19}
+                strokeWidth={1.8}
+              />
             </button>
 
-            {/* ========================================
-                LEFT — PROJECT IMAGE
-            ======================================== */}
+            {/* =====================================
+                LEFT IMAGE
+            ====================================== */}
             <div
               className="
                 relative
                 w-full
-                md:w-[46%]
+                md:w-[45%]
                 h-[280px]
                 md:h-full
                 shrink-0
@@ -100,23 +130,25 @@ export function ProjectModal({
               <img
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                "
                 style={{
                   objectPosition:
                     project.imagePosition ?? "center",
                 }}
               />
 
-              {/* 이미지 위 그라디언트 */}
+              {/* 이미지 그라디언트 */}
               <div
-                className="
-                  absolute
-                  inset-0
-                  pointer-events-none
-                "
+                className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(to top, rgba(13,26,42,0.3), transparent 40%)",
+                    "linear-gradient(to top, rgba(13,26,42,0.38), transparent 45%)",
                 }}
               />
 
@@ -132,37 +164,39 @@ export function ProjectModal({
                 "
               >
                 <span
-                  className="text-[12px] tracking-[0.08em]"
                   style={{
-                    color: "#FFFFFF",
                     fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "11px",
+                    color: "#FFFFFF",
+                    letterSpacing: "0.08em",
                   }}
                 >
-                  PROJECT
+                  {String(projectIndex + 1).padStart(2, "0")}
                 </span>
 
                 <span
-                  className="h-px w-8"
+                  className="w-10 h-[1px]"
                   style={{
                     background: "#FFFFFF80",
                   }}
                 />
 
                 <span
-                  className="text-[12px]"
                   style={{
-                    color: "#FFFFFF",
                     fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "11px",
+                    color: "#FFFFFF",
+                    letterSpacing: "0.08em",
                   }}
                 >
-                  {project.year}
+                  {String(projects.length).padStart(2, "0")}
                 </span>
               </div>
             </div>
 
-            {/* ========================================
-                RIGHT — PROJECT INFORMATION
-            ======================================== */}
+            {/* =====================================
+                RIGHT CONTENT
+            ====================================== */}
             <div
               className="
                 flex-1
@@ -171,44 +205,26 @@ export function ProjectModal({
                 no-scrollbar
               "
             >
-              <div className="px-7 py-8 md:px-10 md:py-10 lg:px-12">
+              <div className="px-7 py-8 md:px-10 md:py-9 lg:px-11">
 
-                {/* Category + Year */}
-                <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className="
-                      px-3
-                      py-1.5
-                      rounded-full
-                    "
-                    style={{
-                      background: `${project.color}22`,
-                      color: project.color,
-                      fontFamily: "'Unbounded', sans-serif",
-                      fontSize: "9px",
-                      fontWeight: 600,
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    {project.category}
-                  </span>
-
-                  <span
-                    style={{
-                      color: "#7B8E9A",
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "11px",
-                    }}
-                  >
-                    {project.year}
-                  </span>
-                </div>
+                {/* Year / Category */}
+                <p
+                  className="mb-3"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "11px",
+                    color: "#718592",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {project.year} · {project.category}
+                </p>
 
                 {/* Title */}
                 <h2
                   style={{
                     fontFamily: "'Unbounded', sans-serif",
-                    fontWeight: 800,
+                    fontWeight: 900,
                     fontSize: "clamp(22px, 3vw, 30px)",
                     lineHeight: 1.25,
                     color: "#0D1A2A",
@@ -218,7 +234,7 @@ export function ProjectModal({
                   {project.title}
                 </h2>
 
-                {/* Accent line */}
+                {/* Accent */}
                 <div
                   className="w-10 h-1 rounded-full mt-5 mb-5"
                   style={{
@@ -230,32 +246,31 @@ export function ProjectModal({
                 <p
                   className="leading-relaxed"
                   style={{
-                    color: "#405766",
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "13px",
+                    color: "#405766",
                   }}
                 >
                   {project.description}
                 </p>
 
-                {project.longDescription && (
-                  <p
-                    className="mt-3 leading-relaxed"
-                    style={{
-                      color: "#718592",
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {project.longDescription}
-                  </p>
-                )}
+                <p
+                  className="mt-2 leading-relaxed"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "12px",
+                    color: "#718592",
+                  }}
+                >
+                  {project.longDescription}
+                </p>
 
-                {/* ========================================
+                {/* =================================
                     MY CONTRIBUTION
-                ======================================== */}
-                <div className="mt-7">
-                  <div className="flex items-center gap-2 mb-4">
+                ================================== */}
+                <div className="mt-6">
+
+                  <div className="flex items-center gap-2 mb-3">
                     <span
                       className="w-2 h-2 rounded-full"
                       style={{
@@ -266,53 +281,84 @@ export function ProjectModal({
                     <h3
                       style={{
                         fontFamily: "'Unbounded', sans-serif",
-                        fontSize: "11px",
+                        fontSize: "10px",
                         fontWeight: 700,
                         color: "#0D1A2A",
                       }}
                     >
-                      핵심 포인트
+                      나의 기여도
                     </h3>
                   </div>
 
-                  {/* Highlights */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                    {project.highlights.map((highlight, index) => (
+                  <div className="flex items-center gap-5">
+
+                    {/* Circle */}
+                    <div
+                      className="relative w-[82px] h-[82px] shrink-0 rounded-full flex items-center justify-center"
+                      style={{
+                        background: `conic-gradient(
+                          ${project.color} 0% ${project.contribution}%,
+                          #EDF2F5 ${project.contribution}% 100%
+                        )`,
+                      }}
+                    >
                       <div
-                        key={index}
                         className="
-                          rounded-2xl
-                          p-4
-                          min-h-[90px]
+                          absolute
+                          inset-[7px]
+                          rounded-full
+                          bg-white
                           flex
                           items-center
+                          justify-center
                         "
-                        style={{
-                          background: `${project.color}0D`,
-                          border: `1px solid ${project.color}20`,
-                        }}
                       >
-                        <p
-                          className="leading-relaxed"
+                        <span
                           style={{
-                            color: "#243D4A",
                             fontFamily: "'DM Sans', sans-serif",
-                            fontSize: "11px",
-                            fontWeight: 600,
+                            fontSize: "19px",
+                            fontWeight: 700,
+                            color: "#0D1A2A",
                           }}
                         >
-                          {highlight}
-                        </p>
+                          {project.contribution}%
+                        </span>
                       </div>
-                    ))}
+                    </div>
+
+                    {/* Role */}
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: "'Unbounded', sans-serif",
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          color: "#0D1A2A",
+                        }}
+                      >
+                        {project.role}
+                      </p>
+
+                      <p
+                        className="mt-1"
+                        style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontSize: "11px",
+                          color: "#718592",
+                        }}
+                      >
+                        프로젝트 내 담당 역할 및 구현 영역
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* ========================================
-                    TECH STACK
-                ======================================== */}
-                <div className="mt-7">
-                  <div className="flex items-center gap-2 mb-4">
+                {/* =================================
+                    RESPONSIBILITIES
+                ================================== */}
+                <div className="mt-6">
+
+                  <div className="flex items-center gap-2 mb-3">
                     <span
                       className="w-2 h-2 rounded-full"
                       style={{
@@ -323,7 +369,139 @@ export function ProjectModal({
                     <h3
                       style={{
                         fontFamily: "'Unbounded', sans-serif",
-                        fontSize: "11px",
+                        fontSize: "10px",
+                        fontWeight: 700,
+                        color: "#0D1A2A",
+                      }}
+                    >
+                      담당 영역
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-2">
+                    {project.responsibilities.map(
+                      (item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2"
+                        >
+                          <span
+                            className="mt-[6px] w-1 h-1 rounded-full shrink-0"
+                            style={{
+                              background:
+                                project.color,
+                            }}
+                          />
+
+                          <p
+                            style={{
+                              fontFamily:
+                                "'DM Sans', sans-serif",
+                              fontSize: "11px",
+                              lineHeight: 1.5,
+                              color: "#405766",
+                            }}
+                          >
+                            {item}
+                          </p>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                {/* =================================
+                    HIGHLIGHTS
+                ================================== */}
+                <div className="mt-6">
+
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{
+                        background: project.color,
+                      }}
+                    />
+
+                    <h3
+                      style={{
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontSize: "10px",
+                        fontWeight: 700,
+                        color: "#0D1A2A",
+                      }}
+                    >
+                      핵심 개선 포인트
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    {project.highlights.map(
+                      (highlight, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          transition={{
+                            delay:
+                              0.25 +
+                              index * 0.08,
+                          }}
+                          className="
+                            min-h-[72px]
+                            p-3
+                            rounded-2xl
+                            flex
+                            items-center
+                          "
+                          style={{
+                            background:
+                              `${project.color}0D`,
+                            border:
+                              `1px solid ${project.color}25`,
+                          }}
+                        >
+                          <p
+                            className="leading-snug"
+                            style={{
+                              fontFamily:
+                                "'DM Sans', sans-serif",
+                              fontSize: "10px",
+                              fontWeight: 600,
+                              color: "#243D4A",
+                            }}
+                          >
+                            {highlight}
+                          </p>
+                        </motion.div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                {/* =================================
+                    TECH STACK
+                ================================== */}
+                <div className="mt-6">
+
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{
+                        background: project.color,
+                      }}
+                    />
+
+                    <h3
+                      style={{
+                        fontFamily: "'Unbounded', sans-serif",
+                        fontSize: "10px",
                         fontWeight: 700,
                         color: "#0D1A2A",
                       }}
@@ -332,7 +510,7 @@ export function ProjectModal({
                     </h3>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
@@ -344,8 +522,10 @@ export function ProjectModal({
                         style={{
                           background: "#F7FBFE",
                           color: "#2AB8DC",
-                          border: "1px solid #2AB8DC30",
-                          fontFamily: "'DM Sans', sans-serif",
+                          border:
+                            "1px solid #2AB8DC30",
+                          fontFamily:
+                            "'DM Sans', sans-serif",
                           fontSize: "10px",
                           fontWeight: 600,
                         }}
@@ -356,10 +536,11 @@ export function ProjectModal({
                   </div>
                 </div>
 
-                {/* ========================================
+                {/* =================================
                     LINKS
-                ======================================== */}
-                <div className="flex flex-wrap gap-3 mt-8">
+                ================================== */}
+                <div className="flex gap-2.5 mt-7 pb-2">
+
                   <a
                     href={project.live}
                     target="_blank"
@@ -367,7 +548,6 @@ export function ProjectModal({
                     className="
                       flex
                       items-center
-                      justify-center
                       gap-2
                       px-6
                       py-3
@@ -379,12 +559,13 @@ export function ProjectModal({
                     style={{
                       background: project.color,
                       color: "#0D1A2A",
-                      fontFamily: "'Unbounded', sans-serif",
+                      fontFamily:
+                        "'Unbounded', sans-serif",
                       fontSize: "10px",
                       fontWeight: 600,
                     }}
                   >
-                    <ExternalLink size={14} />
+                    <ExternalLink size={13} />
                     LIVE
                   </a>
 
@@ -395,7 +576,6 @@ export function ProjectModal({
                     className="
                       flex
                       items-center
-                      justify-center
                       gap-2
                       px-6
                       py-3
@@ -405,17 +585,20 @@ export function ProjectModal({
                       hover:bg-slate-50
                     "
                     style={{
-                      border: `1.5px solid ${project.color}60`,
+                      border:
+                        `1.5px solid ${project.color}60`,
                       color: "#0D1A2A",
-                      fontFamily: "'Unbounded', sans-serif",
+                      fontFamily:
+                        "'Unbounded', sans-serif",
                       fontSize: "10px",
                       fontWeight: 600,
                     }}
                   >
-                    <Github size={14} />
+                    <Github size={13} />
                     GITHUB
                   </a>
                 </div>
+
               </div>
             </div>
           </motion.div>
