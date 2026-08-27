@@ -21,7 +21,12 @@ export function ProjectCard({
       ref={ref}
       initial={{ opacity: 0, x: -50 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.15,
+        type: "tween",
+        ease: "easeOut",
+      }}
       onClick={() => onOpen(project)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -29,8 +34,12 @@ export function ProjectCard({
       style={{
         background: hovered ? "#FFFFFF" : "#FAFCFE",
         border: `1.5px solid ${hovered ? project.color : "rgba(42,184,220,0.15)"}`,
-        transition: "all 0.32s ease",
-        boxShadow: hovered ? `0 12px 40px ${project.color}22` : "0 1px 6px rgba(42,184,220,0.05)",
+        transition:
+          "background-color 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease",
+        boxShadow: hovered
+          ? `0 12px 40px ${project.color}22`
+          : "0 1px 6px rgba(42,184,220,0.05)",
+        willChange: "transform, opacity",
       }}
     >
       {/* Left — big number */}
@@ -61,6 +70,8 @@ export function ProjectCard({
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-500"
           style={{ transform: hovered ? "scale(1.08)" : "scale(1)" }}
+          loading="lazy"
+          decoding="async"
         />
         <div
           className="absolute inset-0"

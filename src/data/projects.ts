@@ -36,7 +36,7 @@ export const projects = [
     color: "#9AE3F7",
     accent: "#FDE991",
 
-    image: "/images/primevideo.png",
+    image: "/images/primevideo.webp",
     imagePosition: "top",
 
     github: "https://github.com",
@@ -76,7 +76,7 @@ export const projects = [
     color: "#FDE991",
     accent: "#2AB8DC",
 
-    image: "/images/casetify.png",
+    image: "/images/casetify.webp",
     imagePosition: "top",
 
     github: "https://github.com/wldbs2334/CASETiFY",
@@ -116,7 +116,7 @@ export const projects = [
     color: "#2AB8DC",
     accent: "#FDE991",
 
-    image: "/images/netflix.png",
+    image: "/images/netflix.webp",
     imagePosition: "top",
 
     github: "https://github.com",
