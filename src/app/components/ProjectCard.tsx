@@ -1,16 +1,16 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { ExternalLink } from "lucide-react";
-import { projects } from "../PortfolioDetail";
+import type { Project } from "../../data/projects";
 
 export function ProjectCard({
   project,
   index,
   onOpen,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   index: number;
-  onOpen: (project: (typeof projects)[0]) => void;
+  onOpen: (project: Project) => void;
 }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);

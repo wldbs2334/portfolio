@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Github, ExternalLink, X } from "lucide-react";
-import { projects } from "../PortfolioDetail";
+import { projects } from "../../data/projects";
 
 type Project = (typeof projects)[number];
 

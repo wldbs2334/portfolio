@@ -1,10 +1,10 @@
-import { projects } from "../PortfolioDetail";
+import { projects, type Project } from "../../data/projects";
 import { Geo } from "../components/Geo";
 import { ProjectCard } from "../components/ProjectCard";
 import { Section } from "../components/Section";
 
 type PortfolioSectionProps = {
-  onOpenProject: (project: (typeof projects)[number]) => void;
+  onOpenProject: (project: Project) => void;
 };
 
 export function PortfolioSection({ onOpenProject }: PortfolioSectionProps) {

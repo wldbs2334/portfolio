@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { projects } from "./PortfolioDetail";
+import { projects } from "../data/projects";
 import { NavDots } from "./components/NavDots";
 import { ProjectModal } from "./components/ProjectModal";
 import { ContactSection } from "./sections/ContactSection";
