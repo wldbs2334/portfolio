@@ -88,15 +88,14 @@ export const projects = [
       "구매 정보 접근성 강화",
     ],
 
-    contribution: 70,
+    contribution: 25,
     role: "UI 구성 및 퍼블리싱 담당",
 
     responsibilities: [
-      "메인·카테고리·상품 상세 페이지 퍼블리싱",
-      "장바구니 및 결제 페이지 UI 구현",
-      "반응형 레이아웃 및 모바일 최적화",
-      "JavaScript를 활용한 인터랙션 구현",
-      "접근성 및 크로스 브라우징 대응",
+      "히어로 섹션 및 콜라보 섹션 구현",
+      "회원정보 페이지 구현",
+      "Firebase를 이용한 유저 정보 처리",
+      "JavaScript를 활용한 인터랙션 구현"
     ],
   },
 
